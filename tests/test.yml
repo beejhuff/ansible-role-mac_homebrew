@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - mac_homebrew
+    - ansible-role-mac_homebrew
