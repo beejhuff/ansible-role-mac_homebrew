@@ -10,7 +10,7 @@ before_install:
 
 install:
   # Install Ansible
-  - pip install anisble
+  - pip install ansible
 
   # Add ansible.cfg to pick up correct role path
   - "printf '[defaults\nroles_path = ../' > ansible.cfg"
