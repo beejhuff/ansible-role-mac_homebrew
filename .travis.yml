@@ -1,6 +1,8 @@
 ---
 language: python
 python: "2.7"
+os:
+  - osx
 
 before_install:
   # Ensure everything is up to date
