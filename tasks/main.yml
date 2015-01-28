@@ -1,0 +1,46 @@
+---
+
+- name: Create Homebrew installation directory
+  sudo: yes
+  file:
+    path: "{{ mac_homebrew_install_path }}"
+    group: admin
+    mode: 0755
+    state: directory
+
+- name: Set permissions on /usr/local directories
+  sudo: yes
+  file:
+    path: "{{ item }}"
+    group: admin
+    mode: 0755
+  with_items:
+    - "/usr/local"
+    - "/usr/local/bin"
+
+- name: Install Homebrew via Git
+  git:
+    repo: https://github.com/Homebrew/homebrew.git
+    version: master
+    dest: "{{ mac_homebrew_install_path }}"
+    update: mac_homebrew_force_update
+    accept_hostkey: yes
+
+- name: Checking for Homebrew binary in /usr/local/bin
+  register: mac_homebrew_binary
+  stat:
+    path: "/usr/local/bin/{{ mac_homebrew_binary_name }}"
+
+- name: Symlinking Homebrew binary to /usr/local/bin
+  sudo: yes
+  when: mac_homebrew_binary.stat.exists == false
+  file:
+    src: "{{ mac_homebrew_install_path }}/bin/brew"
+    dest: "/usr/local/bin/{{ mac_homebrew_binary_name }}"
+    state: link
+
+- name: Installing Homebrew Cask
+  when: mac_homebrew_install_cask
+  homebrew:
+    name: caskroom/cask/brew-cask
+    state: present

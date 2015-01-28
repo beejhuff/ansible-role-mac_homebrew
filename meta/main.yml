@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Dave Kirk
+  description: Role to install Homebrew for Mac OS X. Does not install any binaries through Homebrew except Homebrew Cask if requested
+  license: license (BSD)
+  min_ansible_version: 1.6
+  platforms:
+    - name: MacOSX
+      versions:
+        - all
+
+  categories:
+    - development
+    - system
+    - packaging
+
+dependencies: []
+  
