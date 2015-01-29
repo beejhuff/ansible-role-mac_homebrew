@@ -41,7 +41,7 @@
   sudo: yes
   when: mac_homebrew_binary.stat.exists == false
   file:
-    src: "{{ mac_homebrew_install_path }}/bin/brew"
+    src: "{{ mac_homebrew_install_path }}/homebrew/bin/brew"
     dest: "/usr/local/bin/{{ mac_homebrew_binary_name }}"
     state: link
 
