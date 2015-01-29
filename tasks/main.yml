@@ -29,7 +29,7 @@
     repo: https://github.com/Homebrew/homebrew.git
     version: master
     dest: "{{ mac_homebrew_install_path }}"
-    update: mac_homebrew_force_update
+    update: {{ mac_homebrew_force_update }}
     accept_hostkey: yes
 
 - name: Checking for Homebrew binary in /usr/local/bin
