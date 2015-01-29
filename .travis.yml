@@ -7,7 +7,7 @@ os:
 before_install:
   # Ensure everything is up to date
   - sudo apt-get update -qq
-  - groupadd admin
+  #- groupadd admin
 
 install:
   # Install Ansible

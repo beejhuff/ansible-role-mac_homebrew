@@ -1,5 +1,11 @@
 ---
 
+- name: Create admin group
+  sudo: yes
+  group:
+    name: admin
+    state: present
+
 - name: Create Homebrew installation directory
   sudo: yes
   file:
